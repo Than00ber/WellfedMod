@@ -4,7 +4,7 @@
 
 [![publish](https://github.com/Than00ber/WellfedMod/actions/workflows/publish.yml/badge.svg)](https://github.com/Than00ber/WellfedMod/actions/workflows/publish.yml)
 
-# WellFed - Valheim-Style Food System for Minecraft
+# Well Fed
 
 This mod overhauls how eating works, encouraging players to think more about what food choices they make. Heavily inspired by Valheim's food system.
 
