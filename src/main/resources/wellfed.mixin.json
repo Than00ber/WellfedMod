@@ -1,0 +1,8 @@
+{
+  "package": "com.than00ber.wellfed.mixin",
+  "mixins": [
+    "FoodDataMixin",
+    "ItemMixin",
+    "PlayerMixin"
+  ]
+}
