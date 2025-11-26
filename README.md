@@ -10,6 +10,8 @@ This mod overhauls how eating works, encouraging players to think more about wha
 
 </div>
 
+![foodbar](https://cdn.modrinth.com/data/cached_images/a5d5c2eec2a87a250291ddc723eb6a30a8ac9fb4.png)
+
 ## Configuration
 
 ### Common
