@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,11 +42,11 @@ public class Diet {
         return slots;
     }
 
-    public EatingOutcome canEat(ServerPlayer player, ConsumableFoodData data) {
+    public EatingOutcome canEat(ServerPlayer player, ItemStack stack) {
         int max = player.level().getGameRules().getInt(GameRuleRegistry.MAX_CONSUMABLE_FOOD);
         boolean allow = player.level().getGameRules().getBoolean(GameRuleRegistry.ALLOW_EATING_SAME_ITEM);
         boolean enough = slots.size() < max;
-        boolean balanced = allow || slots.stream().noneMatch(x -> x.item == data.item);
+        boolean balanced = allow || slots.stream().noneMatch(x -> x.item == stack.getItem());
         return !enough ? EatingOutcome.TOO_MANY : !balanced ? EatingOutcome.NOT_BALANCED : EatingOutcome.SUCCESS;
     }
 

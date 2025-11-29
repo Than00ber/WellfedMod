@@ -45,10 +45,9 @@ public abstract class PlayerMixin extends LivingEntity implements IForgePlayer, 
     public void eat(Level level, ItemStack food, CallbackInfoReturnable<ItemStack> callback) {
         if (self() instanceof ServerPlayer player) {
             Diet diet = getDiet();
-            ConsumableFoodData data = new ConsumableFoodData(food, player);
 
-            if (diet.canEat(player, data).isSuccess()) {
-                diet.addToSlot(player, data);
+            if (diet.canEat(player, food).isSuccess()) {
+                diet.addToSlot(player, new ConsumableFoodData(food, player));
                 entityData.set(DIET_ACCESSOR, diet, true);
             }
         }

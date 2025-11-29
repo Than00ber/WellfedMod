@@ -1,6 +1,5 @@
 package com.than00ber.wellfed.mixin;
 
-import com.than00ber.wellfed.food.ConsumableFoodData;
 import com.than00ber.wellfed.food.DietHolder;
 import com.than00ber.wellfed.food.EatingOutcome;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,7 +25,7 @@ public abstract class ItemMixin implements FeatureElement, ItemLike, IForgeItem 
         ItemStack stack = player.getItemInHand(hand);
 
         if (stack.isEdible() && !level.isClientSide() && player instanceof DietHolder holder) {
-            EatingOutcome outcome = holder.getDiet().canEat((ServerPlayer) player, new ConsumableFoodData(stack, player));
+            EatingOutcome outcome = holder.getDiet().canEat((ServerPlayer) player, stack);
 
             if (outcome.isSuccess()) {
                 player.startUsingItem(hand);
