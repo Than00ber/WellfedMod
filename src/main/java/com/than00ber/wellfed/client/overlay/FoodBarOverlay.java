@@ -114,13 +114,11 @@ public class FoodBarOverlay implements IGuiOverlay {
     private Map<ConsumableFoodData, Integer> computeShares(List<ConsumableFoodData> merged) {
         int totalDuration = merged.stream().mapToInt(x -> x.duration).sum();
         Map<ConsumableFoodData, Integer> result = new LinkedHashMap<>();
+        int remainingSlots = 10;
 
         if (merged.isEmpty()) {
             return result;
         }
-        int maxSlots = 10;
-        int remainingSlots = maxSlots;
-
         for (ConsumableFoodData data : merged) {
             result.put(data, 1);
             remainingSlots--;
@@ -132,7 +130,7 @@ public class FoodBarOverlay implements IGuiOverlay {
             if (remainingSlots == 0) break;
 
             float ratio = (float) data.duration / (float) totalDuration;
-            int extra = Math.round(ratio * maxSlots) - 1;
+            int extra = Math.round(ratio * 10) - 1;
 
             if (extra > remainingSlots) {
                 extra = remainingSlots;

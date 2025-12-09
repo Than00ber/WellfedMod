@@ -10,21 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class MiniTextureAtlas {
+public record MiniTextureAtlas(Map<Item, MiniTexture[]> textures) {
 
     private static final int ICONS_PER_ROW = 4;
     private static final int MAX_ROWS = 30;
 
-    protected final Map<Item, MiniTexture[]> textures;
-    
-    protected MiniTextureAtlas(Map<Item, MiniTexture[]> textures) {
-        this.textures = textures;
-    }
-    
     public MiniTexture[] getTextures(Item item) {
         return textures.get(item);
     }
-    
+
     public static class Builder {
 
         protected final ResourceLocation name;
@@ -33,7 +27,7 @@ public class MiniTextureAtlas {
 
         protected int uOffset;
         protected int vOffset;
-        
+
         protected Builder(int count) {
             int width = (count / MAX_ROWS + 1) * (MiniTexture.DIMENSIONS * ICONS_PER_ROW);
             int height = MAX_ROWS * MiniTexture.DIMENSIONS;
@@ -55,7 +49,7 @@ public class MiniTextureAtlas {
             }
             textures.putIfAbsent(item, new MiniTexture[ICONS_PER_ROW]);
             textures.get(item)[index] = new MiniTexture(this, u, v);
-            
+
             if (index == ICONS_PER_ROW - 1) {
                 vOffset += input.getHeight();
 
